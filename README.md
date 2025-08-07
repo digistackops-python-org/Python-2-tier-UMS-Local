@@ -102,4 +102,6 @@ pip install -r requirements.txt
 ```
 python3 app.py
 ```
+<img width="1760" height="414" alt="image" src="https://github.com/user-attachments/assets/f646bfb1-ba0a-467e-8659-ae21b4c5b36b" />
+
 
