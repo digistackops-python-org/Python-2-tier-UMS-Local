@@ -1,5 +1,5 @@
 # Database Setup
-Create 1 "t2.micro" Ec2 Instance ==> For DB
+Create "t2.micro" EC2 Instance and open port "3306" for DB and "" for Python Application server
 
 ## Install MYSQL DB
 ```
@@ -58,7 +58,7 @@ HERE % => any Host will connect
 ```
 sudo vi /etc/my.cnf
 ```
-ADD these below [mysqld]
+ADD these Under [mysqld]
 ```
 bind 0.0.0.0
 ```
