@@ -115,16 +115,16 @@ cd Python-2-tier-UMS-App
 ### switch to PROD Branch
 
 ```
-sudo git 02-Local-setup-Prod
+sudo git checkout 02-Local-setup-Prod
 ```
 
 ## Export DB Credentials as Environment Variables for DB Connection
 
 ```
-export DB_HOST="<your-DB-Private-IP>"
-export DB_USER="appuser"
-export DB_PASS="p@55Word"
-export DB_NAME="user"
+export MYSQL_HOST="<your-DB-Private-IP>"
+export MYSQL_USER="appuser"
+export MYSQL_PASSWORD="p@55Word"
+export MYSQL_DATABASE="user"
 ```
 
 ## Install Dependencies
