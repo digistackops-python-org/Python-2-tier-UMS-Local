@@ -66,6 +66,15 @@ bind 0.0.0.0
 # Application server Setup
 
 Create "t2.nicro" EC2 Instance and Open port "" for Python Application server
+
+## Good-to-Learn
+As of now in "DEV" Branch we Haedcoded DB Credentials in our Code
+
+```
+
+```
+
+
 ## Install Python3
 ```
 sudo yum update -y
