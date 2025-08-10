@@ -1,5 +1,5 @@
 # Database Setup
-Create Single "t2.micro" EC2 Instance and open port "3306" for DB and "" for Python Application server
+Create "t2.micro" EC2 Instance and open port "3306" for DB 
 
 ## Install MYSQL DB
 ```
@@ -65,6 +65,7 @@ bind 0.0.0.0
 
 # Application server Setup
 
+Create "t2.nicro" EC2 Instance and Open port "" for Python Application server
 ## Install Python3
 ```
 sudo yum update -y
