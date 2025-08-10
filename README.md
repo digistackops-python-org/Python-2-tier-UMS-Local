@@ -111,7 +111,7 @@ sudo yum install python3-pip -y
 ```
 git clone https://github.com/techizone-Small-Project-org/Python-2-tier-UMS-App.git
 cd Python-2-tier-UMS-App
-git checkout Local-setup
+git 02-Local-setup-Prod
 ```
 ## Export DB Credentials as Environment Variables for DB Connection
 
