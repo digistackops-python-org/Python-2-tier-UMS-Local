@@ -60,7 +60,7 @@ sudo vi /etc/my.cnf
 ```
 ADD these Under [mysqld]
 ```
-bind 0.0.0.0
+bind-address = 0.0.0.0
 ```
 
 # Application server Setup
