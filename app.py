@@ -1,15 +1,20 @@
 from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
-import bcrypt  
+import bcrypt
+import os
 
-from config import DATABASE_CONFIG
 app = Flask(__name__)
 
-# MySQL configurations
-db = mysql.connector.connect(**DATABASE_CONFIG)
+# Read DB credentials directly from environment variables
+db = mysql.connector.connect(
+    host=os.getenv("DB_HOST", "localhost"),
+    user=os.getenv("DB_USER", "root"),
+    password=os.getenv("DB_PASS", ""),
+    database=os.getenv("DB_NAME", "test")
+)
 cursor = db.cursor()
 
-# Create a table to store user data if it doesn't exist
+# Create table if not exists
 create_table_query = """
     CREATE TABLE IF NOT EXISTS user (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,11 +28,9 @@ create_table_query = """
 cursor.execute(create_table_query)
 db.commit()
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -37,29 +40,25 @@ def submit():
         address = request.form['address']
         phonenumber = request.form['phonenumber']
         
-        # Hash the password before storing it
-        password = request.form['password'].encode('utf-8')  # Get the password from the form
+        password = request.form['password'].encode('utf-8')
         hashed_password = bcrypt.hashpw(password, bcrypt.gensalt())
 
-        # Insert user data into the database
-        insert_query = "INSERT INTO user (name, email, Address, phonenumber, password) VALUES (%s, %s, %s, %s, %s)"
+        insert_query = """
+            INSERT INTO user (name, email, Address, phonenumber, password)
+            VALUES (%s, %s, %s, %s, %s)
+        """
         cursor.execute(insert_query, (name, email, address, phonenumber, hashed_password))
         db.commit()
-        
-        # Fetch the latest entry
+
         cursor.execute("SELECT * FROM user ORDER BY id DESC LIMIT 1")
         data = cursor.fetchall()
-
         return render_template('submitteddata.html', data=data)
     
     return redirect(url_for('index'))
 
-
-
 @app.route('/get-data', methods=['GET', 'POST'])
 def get_data():
     if request.method == 'POST':
-        # Retrieve data based on user input ID
         input_id = request.form['input_id']
         select_query = "SELECT * FROM user WHERE id = %s"
         cursor.execute(select_query, (input_id,))
@@ -70,13 +69,11 @@ def get_data():
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete_data(id):
     if request.method == 'POST':
-        # Perform deletion based on the provided ID
         delete_query = "DELETE FROM user WHERE id = %s"
         cursor.execute(delete_query, (id,))
         db.commit()
         return redirect(url_for('get_data'))
     return render_template('delete.html', id=id)
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080, host='0.0.0.0')
