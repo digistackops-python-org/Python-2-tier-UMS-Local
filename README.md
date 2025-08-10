@@ -67,13 +67,38 @@ bind 0.0.0.0
 
 Create "t2.nicro" EC2 Instance and Open port "" for Python Application server
 
-## Good-to-Learn
-As of now in "DEV" Branch we Haedcoded DB Credentials in our Code
+## Note ==> HERE in our PROD Branch Code we alredy Edit these Code in "app.py", so no need to Change any thing HERE
 
+### Good-To-Know
 ```
+we Create "config.py" and mention our DB credentials and push it to GIT. It expose our Credentials to everyone
+Which is Not recommended in PROD as well
 
+So we need to Pass our DB Credentials as Environment Variables
+For that we need to Change our Code 
+
+
+#### Don't Follow these steps these code is already edited
+
+Open your "app.py" Edit MYSQL configuration
+
+
+# MySQL configurations
+db = mysql.connector.connect(**DATABASE_CONFIG)
+cursor = db.cursor()
+
+
+Edit and replace with these Lines
+
+# Read DB credentials directly from environment variables
+db = mysql.connector.connect(
+    host=os.getenv("DB_HOST", "localhost"),
+    user=os.getenv("DB_USER", "root"),
+    password=os.getenv("DB_PASS", ""),
+    database=os.getenv("DB_NAME", "test")
+)
+cursor = db.cursor()
 ```
-
 
 ## Install Python3
 ```
@@ -88,19 +113,13 @@ git clone https://github.com/techizone-Small-Project-org/Python-2-tier-UMS-App.g
 cd Python-2-tier-UMS-App
 git checkout Local-setup
 ```
-## Create "config.py" file for DB Connection
+## Export DB Credentials as Environment Variables for DB Connection
 
 ```
-sudo vimn config.py
-```
-Add these Lines
-```
-DATABASE_CONFIG = {
-    'host': '<your-DB-Private-IP>',
-    'user': 'appuser',
-    'password': 'p@55Word',
-    'database': 'user'
-}
+export DB_HOST="<your-DB-Private-IP>"
+export DB_USER="appuser"
+export DB_PASS="p@55Word"
+export DB_NAME="user"
 ```
 
 ## Install Dependencies
