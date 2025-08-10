@@ -51,7 +51,7 @@ CREATE USER 'appuser'@'%' IDENTIFIED BY 'P@55Word';
 GRANT ALL PRIVILEGES ON user.* TO 'appuser'@'%';
 FLUSH PRIVILEGES;
 ```
-HERE % => any Host will connect
+#### HERE "%" => means any Host will connect
 
 ## Allow any Host connect to DB
 
