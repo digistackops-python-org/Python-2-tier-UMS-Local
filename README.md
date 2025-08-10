@@ -77,7 +77,7 @@ sudo yum install python3-pip -y
 ```
 git clone https://github.com/techizone-Small-Project-org/Python-2-tier-UMS-App.git
 cd Python-2-tier-UMS-App
-git checkout Local-setup
+git checkout 01-Local-setup-Dev
 ```
 ## Create "config.py" file for DB Connection
 
