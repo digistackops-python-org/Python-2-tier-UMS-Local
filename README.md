@@ -16,6 +16,18 @@ sudo systemctl status mysqld
 
 ## Setup MYSQL DB
 
+```
+sudo vi /etc/my.cnf
+```
+ADD these Under [mysqld]
+```
+bind-address = 0.0.0.0
+```
+Restart MYSQL DB
+```
+sudo systemctl restart mysqld
+```
+
 Get your temporary root Password
 ```
 sudo grep 'temporary password' /var/log/mysqld.log
@@ -55,13 +67,7 @@ HERE % => any Host will connect
 
 ## Allow any Host connect to DB
 
-```
-sudo vi /etc/my.cnf
-```
-ADD these Under [mysqld]
-```
-bind-address = 0.0.0.0
-```
+
 
 # Application server Setup
 
