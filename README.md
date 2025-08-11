@@ -182,6 +182,10 @@ Login to your MYSQL
 ```
 mysql -u root -p
 ```
+Show the List of DBs
+```
+SHOW DATABASES;
+```
 Switch to your "user" DB
 ```
 USE user;
