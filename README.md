@@ -49,6 +49,12 @@ SELECT VERSION();
 ```
 CREATE DATABASE user;
 ```
+Check the DB created or Not
+```
+SHOW DATABASES LIKE 'user';
+```
+<img width="286" height="114" alt="image" src="https://github.com/user-attachments/assets/44822257-352a-4828-b9c5-d6c164d6c9b4" />
+
 ## Create one system User for our Application in DB
 These user can login to DB to do Tasks
 ```
@@ -58,6 +64,21 @@ GRANT ALL PRIVILEGES ON <DB-Name>.* TO '<user-name>'@'Host-IP';
 
 FLUSH PRIVILEGES;
 ```
+Check the Permissions of the "appuser" in DB
+
+```
+SELECT user, host FROM mysql.user WHERE user='appuser';
+```
+I showing like these, then your Configuration is right
+
+<img width="508" height="110" alt="image" src="https://github.com/user-attachments/assets/f0649488-b5b1-40c7-a46d-5d7f53ec4240" />
+
+Check the Grants of the "appuser" in DB
+
+```
+SHOW GRANTS FOR 'appuser'@'%';
+```
+<img width="443" height="130" alt="image" src="https://github.com/user-attachments/assets/9b78491c-4db2-4b7f-ab6d-aa331090c636" />
 
 ```
 CREATE USER 'appuser'@'%' IDENTIFIED BY 'P@55Word';
@@ -99,10 +120,10 @@ Edit and replace with these Lines
 
 # Read DB credentials directly from environment variables
 db = mysql.connector.connect(
-    host=os.getenv("DB_HOST", "localhost"),
-    user=os.getenv("DB_USER", "root"),
-    password=os.getenv("DB_PASS", ""),
-    database=os.getenv("DB_NAME", "test")
+    host=os.getenv("MYSQL_HOST", "localhost"),
+    user=os.getenv("MYSQL_USER", "root"),
+    password=os.getenv("MYSQL_PASSWORD", ""),
+    database=os.getenv("MYSQL_DATABASE", "test")
 )
 cursor = db.cursor()
 ```
@@ -130,7 +151,7 @@ sudo git checkout 02-Local-setup-Prod
 ```
 export MYSQL_HOST="<your-DB-Private-IP>"
 export MYSQL_USER="appuser"
-export MYSQL_PASSWORD="p@55Word"
+export MYSQL_PASSWORD="P@55Word"
 export MYSQL_DATABASE="user"
 ```
 
@@ -143,6 +164,31 @@ pip install -r requirements.txt
 ```
 python3 app.py
 ```
-<img width="1760" height="414" alt="image" src="https://github.com/user-attachments/assets/f646bfb1-ba0a-467e-8659-ae21b4c5b36b" />
+<img width="1079" height="153" alt="image" src="https://github.com/user-attachments/assets/4d175f5e-ffce-4bcf-a702-43a639891b77" />
+
+<img width="1065" height="147" alt="image" src="https://github.com/user-attachments/assets/954b0f0c-cf97-44f0-beca-b3b5c9c79150" />
+
+# Check data saved in DB or Not
+
+Login to your MYSQL
+```
+mysql -u root -p
+```
+Switch to your "user" DB
+```
+USE user;
+```
+
+See the Tables under "user" DB
+```
+SHOW TABLES;
+```
+To see Data stored under "user" DB or Not
+```
+SELECT * FROM user;
+```
+<img width="967" height="124" alt="image" src="https://github.com/user-attachments/assets/4a100684-4265-4ea3-bc11-95b51a66dbd6" />
+
+
 
 
