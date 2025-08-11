@@ -16,6 +16,7 @@ sudo systemctl status mysqld
 
 ## Setup MYSQL DB
 
+#### Allow any Host connect to DB
 ```
 sudo vi /etc/my.cnf
 ```
@@ -65,7 +66,7 @@ FLUSH PRIVILEGES;
 ```
 HERE % => any Host will connect
 
-## Allow any Host connect to DB
+
 
 
 
