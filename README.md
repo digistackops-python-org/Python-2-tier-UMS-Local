@@ -64,6 +64,13 @@ GRANT ALL PRIVILEGES ON <DB-Name>.* TO '<user-name>'@'Host-IP';
 
 FLUSH PRIVILEGES;
 ```
+```
+CREATE USER 'appuser'@'%' IDENTIFIED BY 'P@55Word';
+GRANT ALL PRIVILEGES ON user.* TO 'appuser'@'%';
+FLUSH PRIVILEGES;
+```
+HERE % => any Host will connect
+
 Check the Permissions of the "appuser" in DB
 
 ```
@@ -80,12 +87,7 @@ SHOW GRANTS FOR 'appuser'@'%';
 ```
 <img width="443" height="130" alt="image" src="https://github.com/user-attachments/assets/9b78491c-4db2-4b7f-ab6d-aa331090c636" />
 
-```
-CREATE USER 'appuser'@'%' IDENTIFIED BY 'P@55Word';
-GRANT ALL PRIVILEGES ON user.* TO 'appuser'@'%';
-FLUSH PRIVILEGES;
-```
-HERE % => any Host will connect
+
 
 
 
