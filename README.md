@@ -95,7 +95,7 @@ SHOW GRANTS FOR 'appuser'@'%';
 
 # Application server Setup
 
-Create "t2.nicro" EC2 Instance and Open port "" for Python Application server
+Create "t2.nicro" EC2 Instance and Open port "8080" for Python Application server
 
 ## Note ==> HERE in our PROD Branch Code we alredy Edit these Code in "app.py", so no need to Change any thing HERE
 
@@ -166,6 +166,12 @@ pip install -r requirements.txt
 ```
 python3 app.py
 ```
+### Open browser abd check your App
+
+```
+http://<AWS-Public-IP>:8080
+```
+
 <img width="1079" height="153" alt="image" src="https://github.com/user-attachments/assets/4d175f5e-ffce-4bcf-a702-43a639891b77" />
 
 <img width="1065" height="147" alt="image" src="https://github.com/user-attachments/assets/954b0f0c-cf97-44f0-beca-b3b5c9c79150" />
