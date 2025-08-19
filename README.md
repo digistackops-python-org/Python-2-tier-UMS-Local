@@ -139,8 +139,8 @@ sudo yum install python3-pip -y
 ```
 ## Get the Code
 ```
-git clone https://github.com/techizone-Small-Project-org/Python-2-tier-UMS-App.git
-cd Python-2-tier-UMS-App
+git clone https://github.com/digistackops-python-org/Python-2-tier-UMS-Local.git
+cd Python-2-tier-UMS-Local
 ```
 ### switch to PROD Branch
 
