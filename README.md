@@ -75,14 +75,14 @@ sudo yum install python3-pip -y
 ```
 ## Get the Code
 ```
-git clone https://github.com/techizone-Small-Project-org/Python-2-tier-UMS-App.git
-cd Python-2-tier-UMS-App
+git clone https://github.com/digistackops-python-org/Python-2-tier-UMS-Local.git
+cd Python-2-tier-UMS-Local
 git checkout 01-Local-setup-Dev
 ```
 ## Create "config.py" file for DB Connection
 
 ```
-sudo vimn config.py
+sudo vim config.py
 ```
 Add these Lines
 ```
@@ -102,6 +102,10 @@ pip install -r requirements.txt
 ## Start the App
 ```
 python3 app.py
+```
+### Access Your Application in Browser
+```
+http://<Your-AWS-Public-IP>:8080
 ```
 <img width="1760" height="414" alt="image" src="https://github.com/user-attachments/assets/f646bfb1-ba0a-467e-8659-ae21b4c5b36b" />
 
