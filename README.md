@@ -107,6 +107,9 @@ python3 app.py
 ```
 http://<Your-AWS-Public-IP>:8080
 ```
-<img width="1760" height="414" alt="image" src="https://github.com/user-attachments/assets/f646bfb1-ba0a-467e-8659-ae21b4c5b36b" />
+<img width="1079" height="153" alt="image" src="https://github.com/user-attachments/assets/1a30da40-03a1-4072-aa23-4df8db607392" />
+<img width="1065" height="147" alt="image" src="https://github.com/user-attachments/assets/d03318b9-00b3-4de9-a0da-26d7a2a4fd54" />
+
+
 
 
