@@ -34,7 +34,7 @@ sudo systemctl restart mysqld
 
 Create "t2.micro" EC2 Instance and Open port "8080" for Python Application server
 
-## Setup your Application Database by executing "init.sql" script from Application-server
+## Setup your Application Database by executing "initdb.sql" script from Application-server
 
 Step:1 ==> install "MYSQL-Client" for communicate with MYSQL Database
 ```
