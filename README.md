@@ -47,7 +47,7 @@ SELECT VERSION();
 ```
 ## Create our Application DB 'user'
 ```
-CREATE DATABASE user;
+CREATE DATABASE IF NOT EXISTS user;
 ```
 Check the DB created or Not
 ```
@@ -95,7 +95,7 @@ SHOW GRANTS FOR 'appuser'@'%';
 
 # Application server Setup
 
-Create "t2.nicro" EC2 Instance and Open port "8080" for Python Application server
+Create "t2.micro" EC2 Instance and Open port "8080" for Python Application server
 
 ## Note ==> HERE in our PROD Branch Code we alredy Edit these Code in "app.py", so no need to Change any thing HERE
 
