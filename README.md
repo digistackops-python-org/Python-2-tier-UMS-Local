@@ -47,11 +47,11 @@ SELECT VERSION();
 ```
 ## Create our Application DB 'user'
 ```
-CREATE DATABASE IF NOT EXISTS user;
+CREATE DATABASE IF NOT EXISTS employeedb;
 ```
 Check the DB created or Not
 ```
-SHOW DATABASES LIKE 'user';
+SHOW DATABASES LIKE 'employeedb';
 ```
 <img width="286" height="114" alt="image" src="https://github.com/user-attachments/assets/44822257-352a-4828-b9c5-d6c164d6c9b4" />
 
@@ -66,7 +66,7 @@ FLUSH PRIVILEGES;
 ```
 ```
 CREATE USER 'appuser'@'%' IDENTIFIED BY 'P@55Word';
-GRANT ALL PRIVILEGES ON user.* TO 'appuser'@'%';
+GRANT ALL PRIVILEGES ON employeedb.* TO 'appuser'@'%';
 FLUSH PRIVILEGES;
 ```
 HERE % => any Host will connect
