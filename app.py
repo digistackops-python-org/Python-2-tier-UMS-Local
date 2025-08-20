@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Read DB credentials directly from environment variables
 db = mysql.connector.connect(
     host=os.getenv("MYSQL_HOST", "localhost"),
-    user=os.getenv("MYSQL_USER", "root"),
+    user=os.getenv("MYSQL_USER", "appuser"),
     password=os.getenv("MYSQL_PASSWORD", ""),
     database=os.getenv("MYSQL_DATABASE", "user")
 )
