@@ -7,10 +7,10 @@ FLUSH PRIVILEGES;
 USE employeedb;
 
 CREATE TABLE IF NOT EXISTS user (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100),
-    course VARCHAR(100),
-    fees DECIMAL(10,2),
-    status VARCHAR(50)
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255),
+        email VARCHAR(255),
+        Address TEXT,
+        phonenumber VARCHAR(255),
+        password VARCHAR(255)
 );
