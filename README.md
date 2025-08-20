@@ -47,7 +47,7 @@ sudo dnf install mysql-community-client -y
 Step:2 ==> Execute your "init.sql" script for your Application DB setup
 
 ```
-mysql -u appuser -p<root-Password> < init.sql
+mysql -u appuser -p<root-Password> < initdb.sql
 ```
 
 ## Note ==> HERE in our PROD Branch Code we alredy Edit these Code in "app.py", so no need to Change any thing HERE
