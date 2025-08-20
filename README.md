@@ -29,73 +29,26 @@ Restart MYSQL DB
 sudo systemctl restart mysqld
 ```
 
-Get your temporary root Password
-```
-sudo grep 'temporary password' /var/log/mysqld.log
-```
-Setup your root Password
-```
-sudo mysql_secure_installation
-```
-Login to your MYSQL
-```
-mysql -u root -p
-```
-Test it is working or Not
-```
-SELECT VERSION();
-```
-## Create our Application DB 'user'
-```
-CREATE DATABASE IF NOT EXISTS employeedb;
-```
-Check the DB created or Not
-```
-SHOW DATABASES LIKE 'employeedb';
-```
-<img width="286" height="114" alt="image" src="https://github.com/user-attachments/assets/44822257-352a-4828-b9c5-d6c164d6c9b4" />
-
-## Create one system User for our Application in DB
-These user can login to DB to do Tasks
-```
-CREATE USER '<user-name>'@'Host-IP' IDENTIFIED BY 'Password-HERE';
-
-GRANT ALL PRIVILEGES ON <DB-Name>.* TO '<user-name>'@'Host-IP';
-
-FLUSH PRIVILEGES;
-```
-```
-CREATE USER 'appuser'@'%' IDENTIFIED BY 'P@55Word';
-GRANT ALL PRIVILEGES ON employeedb.* TO 'appuser'@'%';
-FLUSH PRIVILEGES;
-```
-HERE % => any Host will connect
-
-Check the Permissions of the "appuser" in DB
-
-```
-SELECT user, host FROM mysql.user WHERE user='appuser';
-```
-I showing like these, then your Configuration is right
-
-<img width="508" height="110" alt="image" src="https://github.com/user-attachments/assets/f0649488-b5b1-40c7-a46d-5d7f53ec4240" />
-
-Check the Grants of the "appuser" in DB
-
-```
-SHOW GRANTS FOR 'appuser'@'%';
-```
-<img width="443" height="130" alt="image" src="https://github.com/user-attachments/assets/9b78491c-4db2-4b7f-ab6d-aa331090c636" />
-
-
-
-
-
-
 
 # Application server Setup
 
 Create "t2.micro" EC2 Instance and Open port "8080" for Python Application server
+
+## Setup your Application Database by executing "init.sql" script from Application-server
+
+Step:1 ==> install "MYSQL-Client" for communicate with MYSQL Database
+```
+sudo yum update -y
+sudo wget https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm
+sudo dnf install mysql80-community-release-el9-1.noarch.rpm -y
+sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+sudo dnf install mysql-community-client -y
+```
+Step:2 ==> Execute your "init.sql" script for your Application DB setup
+
+```
+mysql -u appuser -p<root-Password> < init.sql
+```
 
 ## Note ==> HERE in our PROD Branch Code we alredy Edit these Code in "app.py", so no need to Change any thing HERE
 
