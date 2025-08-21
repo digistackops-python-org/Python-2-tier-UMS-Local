@@ -28,28 +28,41 @@ Restart MYSQL DB
 ```
 sudo systemctl restart mysqld
 ```
+Get your temporary root Password
+```
+sudo grep 'temporary password' /var/log/mysqld.log
+```
+Setup your root Password
+```
+sudo mysql_secure_installation
+```
+Login to your MYSQL
+```
+mysql -u root -p
+```
+Test it is working or Not
+```
+SELECT VERSION();
+```
+### Create one Databse Admin User for our DB 
+These user can login to DB to do Tasks and used 
+```
+CREATE USER '<user-name>'@'Host-IP' IDENTIFIED BY 'Password-HERE';
+GRANT ALL PRIVILEGES ON <DB-Name>.* TO '<user-name>'@'Host-IP';
+FLUSH PRIVILEGES;
+```
+
+```
+CREATE USER 'dbadmin'@'%' IDENTIFIED BY 'Admin@123';
+GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
 
 
 # Application server Setup
 
 Create "t2.micro" EC2 Instance and Open port "8080" for Python Application server
 
-## Setup your Application Database by executing "initdb.sql" script from Application-server
-
-Step:1 ==> install "MYSQL-Client" for communicate with MYSQL Database
-```
-sudo yum update -y
-sudo wget https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm
-sudo dnf install mysql80-community-release-el9-1.noarch.rpm -y
-sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
-sudo dnf install mysql-community-client -y
-```
-Step:2 ==> Execute your "init.sql" script for your Application DB setup
-
-```
-mysql -h <DB-Private-IP> -u root -p <DB-Root-Password> < initdb.sql
-```
-why We use root user HERE => because we just launch MYSQL DB so no other user in DB
 
 ## Note ==> HERE in our PROD Branch Code we alredy Edit these Code in "app.py", so no need to Change any thing HERE
 
@@ -100,6 +113,21 @@ cd Python-2-tier-UMS-Local
 
 ```
 sudo git checkout 02-Local-setup-Prod
+```
+## Setup your Application Database by executing "initdb.sql" script from Application-server
+
+Step:1 ==> install "MYSQL-Client" for communicate with MYSQL Database
+```
+sudo yum update -y
+sudo wget https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm
+sudo dnf install mysql80-community-release-el9-1.noarch.rpm -y
+sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+sudo dnf install mysql-community-client -y
+```
+Step:2 ==> Execute your "init.sql" script for your Application DB setup
+
+```
+mysql -h <DB-Prvate-IP> -udbadmin -pAdmin@123 < initdb.sql
 ```
 
 ## Export DB Credentials as Environment Variables for DB Connection
