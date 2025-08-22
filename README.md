@@ -136,7 +136,7 @@ mysql -h <DB-Prvate-IP> -udbadmin -pAdmin@123 < initdb.sql
 export MYSQL_HOST="<your-DB-Private-IP>"
 export MYSQL_USER="appuser"
 export MYSQL_PASSWORD="P@55Word"
-export MYSQL_DATABASE="user"
+export MYSQL_DATABASE="employeedb"
 ```
 
 ## Install Dependencies
@@ -170,7 +170,7 @@ SHOW DATABASES;
 ```
 Switch to your "user" DB
 ```
-USE user;
+USE employeedb;
 ```
 
 See the Tables under "user" DB
